@@ -1,4 +1,4 @@
-const roles=[
+const roles = [
 
 "Full Stack Developer",
 
@@ -8,36 +8,158 @@ const roles=[
 
 ]
 
-let i=0
+let current = 0
 
-const el=
+const typing = document.getElementById("typing")
 
-document
-.getElementById(
-"typing"
-)
+function updateRole(){
 
-function run(){
+typing.style.opacity = 0
 
-el.innerHTML=
+setTimeout(()=>{
 
-roles[i]
+typing.innerHTML = roles[current]
 
-i++
+typing.style.opacity = 1
 
-if(
-i===roles.length
-){
+current++
 
-i=0
+if(current >= roles.length){
+
+current = 0
 
 }
 
+},300)
+
 }
 
-run()
+updateRole()
 
 setInterval(
-run,
-2000
+
+updateRole,
+
+2200
+
+)
+
+
+
+const sections =
+
+document.querySelectorAll(
+
+"section"
+
+)
+
+
+
+const observer =
+
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(
+
+(entry)=>{
+
+if(
+
+entry.isIntersecting
+
+){
+
+entry.target
+
+.style.opacity="1"
+
+entry.target
+
+.style.transform=
+
+"translateY(0)"
+
+}
+
+}
+
+)
+
+},
+
+{
+
+threshold:.2
+
+}
+
+)
+
+
+
+sections.forEach(
+
+(section)=>{
+
+section.style.opacity=0
+
+section.style.transform=
+
+"translateY(80px)"
+
+section.style.transition=
+
+"all 1s"
+
+observer.observe(
+
+section
+
+)
+
+}
+
+)
+
+
+
+window.addEventListener(
+
+"scroll",
+
+()=>{
+
+const nav =
+
+document.querySelector(
+
+"nav"
+
+)
+
+if(
+
+window.scrollY>50
+
+){
+
+nav.style.background=
+
+"rgba(0,0,0,.35)"
+
+}
+
+else{
+
+nav.style.background=
+
+"transparent"
+
+}
+
+}
+
 )
