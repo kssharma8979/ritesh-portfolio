@@ -1,4 +1,4 @@
-const roles=[
+const roles = [
 
 "Full Stack Developer",
 
@@ -10,25 +10,20 @@ const roles=[
 
 
 
-let current=0
+let index = 0
 
-
-
-const typing=
-
+const typing =
 document.getElementById(
 "typing"
 )
 
 
 
-function changeRole(){
+function animateText(){
 
 if(!typing)return
 
-
-
-typing.style.opacity=0
+typing.style.opacity="0"
 
 
 
@@ -36,29 +31,21 @@ setTimeout(()=>{
 
 typing.innerHTML=
 
-roles[current]
+roles[index]
 
 
 
-typing.style.opacity=1
+typing.style.opacity="1"
 
 
 
-current++
+index++
 
+if(index>=roles.length){
 
-
-if(
-
-current>=roles.length
-
-){
-
-current=0
+index=0
 
 }
-
-
 
 },250)
 
@@ -66,13 +53,13 @@ current=0
 
 
 
-changeRole()
+animateText()
 
 
 
 setInterval(
 
-changeRole,
+animateText,
 
 2200
 
@@ -82,73 +69,11 @@ changeRole,
 
 
 
-const sections=
+const navbar =
 
-document.querySelectorAll(
-
-"section"
-
+document.querySelector(
+"nav"
 )
-
-
-
-const observer=
-
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(
-
-(entry)=>{
-
-if(
-
-entry.isIntersecting
-
-){
-
-entry.classList.add(
-
-"show"
-
-)
-
-}
-
-}
-
-)
-
-},
-
-{
-
-threshold:.15
-
-}
-
-)
-
-
-
-sections.forEach(
-
-(section)=>{
-
-section.classList.add(
-
-"hidden"
-
-)
-
-observer.observe(
-
-section)
-
-})
-
-
 
 
 
@@ -158,43 +83,33 @@ window.addEventListener(
 
 ()=>{
 
-const nav=
-
-document.querySelector(
-
-"nav"
-
-)
-
-
-
 if(
 
-window.scrollY>60
+window.scrollY>50
 
 ){
 
-nav.style.background=
+navbar.style.background=
 
-"rgba(8,14,24,.70)"
+"rgba(5,10,18,.75)"
 
 
 
-nav.style.boxShadow=
+navbar.style.boxShadow=
 
-"0 8px 40px rgba(0,215,255,.12)"
+"0 10px 40px rgba(0,215,255,.10)"
 
 }
 
 else{
 
-nav.style.background=
+navbar.style.background=
 
-"rgba(0,0,0,.15)"
+"rgba(0,0,0,.18)"
 
 
 
-nav.style.boxShadow=
+navbar.style.boxShadow=
 
 "none"
 
@@ -208,57 +123,11 @@ nav.style.boxShadow=
 
 
 
-const links=
+const cards =
 
 document.querySelectorAll(
 
-"nav a"
-
-)
-
-
-
-links.forEach(
-
-(link)=>{
-
-link.addEventListener(
-
-"click",
-
-()=>{
-
-links.forEach(
-
-(a)=>{
-
-a.style.color=
-
-"white"
-
-}
-
-)
-
-
-
-link.style.color=
-
-"#00d7ff"
-
-})
-
-})
-
-
-
-
-
-const cards=
-
-document.querySelectorAll(
-
-".project,.card,.grid div"
+".card,.project,.grid div"
 
 )
 
@@ -270,7 +139,7 @@ cards.forEach(
 
 card.addEventListener(
 
-"mousemove",
+"mouseenter",
 
 ()=>{
 
@@ -300,12 +169,58 @@ card.style.transform=
 
 
 
+const navLinks =
+
+document.querySelectorAll(
+
+"nav a"
+
+)
+
+
+
+navLinks.forEach(
+
+(link)=>{
+
+link.addEventListener(
+
+"click",
+
+()=>{
+
+navLinks.forEach(
+
+(a)=>{
+
+a.style.color=
+
+"white"
+
+}
+
+)
+
+
+
+link.style.color=
+
+"#00d7ff"
+
+})
+
+})
+
+
+
+
+
 window.addEventListener(
 
 "load",
 
 ()=>{
 
-document.body.style.opacity=1
+document.body.style.opacity="1"
 
 })
