@@ -300,20 +300,27 @@ Contact Me
 </h2>
 
 <div class="contact-wrap">
-
-
-<form>
-
-<input
-placeholder="Your Name">
+
+<form
+action="https://formsubmit.co/YOUR_EMAIL@gmail.com"
+method="POST">
 
 <input
-placeholder="Your Email">
+placeholder="Your Name"
+name="name">
+
+<input
+placeholder="Your Email"
+name="email">
 
 <textarea
-rows="6"
-placeholder="Your Message">
+name="message">
 </textarea>
+
+<input
+type="hidden"
+name="_captcha"
+value="false">
 
 <button>
 
@@ -322,10 +329,7 @@ Send Message
 </button>
 
 </form>
-
-
-
-
+
 <div class="connect">
 
 <h3>
